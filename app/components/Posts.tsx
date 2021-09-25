@@ -24,6 +24,13 @@ export default function Posts(props: Props) {
           <Link href={`/streams/${post._id}`}>
             <CardActionArea component='a' href='#'>
               <Card className={styles.card}>
+                <Hidden xsDown>
+                  <CardMedia
+                    className={styles.cardMedia}
+                    image='https://source.unsplash.com/random'
+                    title='Image title'
+                  />
+                </Hidden>                
                 <div className={styles.cardDetails}>
                   <CardContent>
                     <Typography
@@ -34,14 +41,6 @@ export default function Posts(props: Props) {
                       {post.title}
                     </Typography>
                     <Typography
-                      noWrap={true}
-                      variant='subtitle1'
-                      color='textSecondary'
-                      className={styles.cardText}
-                    >
-                      {post.url}
-                    </Typography>
-                    <Typography
                       variant='subtitle1'
                       paragraph
                       className={styles.cardText}
@@ -50,13 +49,6 @@ export default function Posts(props: Props) {
                     </Typography>
                   </CardContent>
                 </div>
-                <Hidden xsDown>
-                  <CardMedia
-                    className={styles.cardMedia}
-                    image='https://source.unsplash.com/random'
-                    title='Image title'
-                  />
-                </Hidden>
               </Card>
             </CardActionArea>
           </Link>
@@ -72,7 +64,6 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   card: {
     display: 'flex',
-    overflow: 'scroll',
   },
   cardDetails: {
     flex: 1,

@@ -3,10 +3,10 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { ApolloProvider } from '@apollo/client';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import { useApollo } from 'lib/apollo';
-import theme from '../lib/theme';
 import { AuthProvider } from 'lib/useAuth';
 import Header from 'components/Header';
 import Head from 'next/head';
+import theme from '../lib/theme';
 
 const GlobalStyle = createGlobalStyle`
   
@@ -40,16 +40,8 @@ export default function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>ASANA - Meditation music stream's storage</title>
+        <title>LIFE MANAGE - Manage your life</title>
         <link rel='icon' type='image/x-icon' href='/public/favicon.ico'></link>
-        <link
-          href='https://fonts.googleapis.com/css2?family=DM+Serif+Text&display=swap'
-          rel='stylesheet'
-        />
-        <link
-          href='https://fonts.googleapis.com/css2?family=Lato&display=swap'
-          rel='stylesheet'
-        ></link>
       </Head>
       <ApolloProvider client={apolloClient}>
         <GlobalStyle />

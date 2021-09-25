@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { useAuth } from 'lib/useAuth';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
 import { Menu, Close } from '@material-ui/icons';
+import { useAuth } from 'lib/useAuth';
 
 const NavBar = styled.div`
   display: flex;
@@ -77,8 +77,8 @@ const Button = styled.a`
 `;
 
 export default function Header() {
-  const { user } = useAuth();
   const router = useRouter();
+  const { user } = useAuth();
 
   const [navToggleOpen, setNavToggleOpen] = useState(false);
 
@@ -93,7 +93,7 @@ export default function Header() {
   const links = [
     !user && { label: 'Sign Up', href: '/auth/signup' },
     !user && { label: 'Sign In', href: '/auth/signin' },
-    user && { label: 'Create', href: '/streams/new' },
+    user && { label: 'Create', href: '/streams/create' },
     user && { label: 'Sign Out', href: '/auth/signout' },
   ]
     .filter(link => link)
@@ -108,7 +108,7 @@ export default function Header() {
   return (
     <NavBar style={navStyle}>
       <Link href='/'>
-        <Logo>Asana</Logo>
+        <Logo>Life Manager</Logo>
       </Link>
 
       <ToggleBtn onClick={() => setNavToggleOpen(!navToggleOpen)}>

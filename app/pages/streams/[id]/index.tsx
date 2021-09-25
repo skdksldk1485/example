@@ -10,7 +10,7 @@ const Container = styled.div`
   @media ${({ theme }) => theme.device.mobile} {
     margin: 80px 10px;
     text-align: center;
-  }
+  }  
 `;
 
 export default function StreamDetail({ id }) {

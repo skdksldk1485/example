@@ -1,20 +1,16 @@
 import Link from 'next/link';
 import { useRef, useState, useEffect } from 'react';
 import styled, { keyframes } from 'styled-components';
-import showcase from '../images/showcase.jpg';
-import sectionA from '../images/sectionA.jpg';
-import sectionB from '../images/sectionB.jpg';
-import sectionC from '../images/sectionC.jpg';
+
 import {
-  SpaTwoTone,
-  MusicNoteTwoTone,
-  FavoriteTwoTone,
+  TabletMac,
+  WbIncandescent,
   KeyboardArrowDownRounded,
   KeyboardArrowUpRounded,
 } from '@material-ui/icons';
 
 const Showcase = styled.div`
-  background: url(${showcase}) no-repeat center center/cover;
+  background: url('/background.jpg') no-repeat center center/cover;
   height: 100vh;
   position: relative; /* If absolute is inside the parent, parent element should be relative */
   display: flex;
@@ -76,7 +72,7 @@ const Showcase = styled.div`
     h1 {
       margin-top: 100px;
     }
-  }
+  }  
 `;
 
 const Button = styled.button`
@@ -99,7 +95,7 @@ const Button = styled.button`
 
   @media ${({ theme }) => theme.device.mobile} {
     font-size: 0.8rem;
-  }
+  }  
 `;
 
 const bounce = keyframes`
@@ -116,7 +112,7 @@ const bounce = keyframes`
 
 const Bounce = styled.div`
   animation: ${bounce} 2s infinite;
-  margin-top: 300px;
+  margin-top: 250px;
 
   .arrow-icon {
     transform: scale(3.2);
@@ -149,7 +145,7 @@ const SectionContainer = styled.div`
 
   @media ${({ theme }) => theme.device.mobile} {
     flex-direction: column;
-  }
+  }  
 `;
 
 const Section = styled.div`
@@ -219,7 +215,7 @@ const SectionContent = styled.div`
   }
 `;
 
-const FloatingButton = styled.button`
+const FloatingButton = styled.button< { show : boolean } >`
   visibility: ${props => (props.show ? 'visibile' : 'hidden')};
   opacity: ${props => (props.show ? 1 : 0)};
   background: linear-gradient(
@@ -252,7 +248,7 @@ const FloatingButton = styled.button`
     .arrow-icon {
       transform: scale(2);
     }
-  }
+  }  
 `;
 
 const Footer = styled.footer`
@@ -265,12 +261,12 @@ const Footer = styled.footer`
 
   @media ${({ theme }) => theme.device.mobile} {
     font-size: 0.8rem;
-  }
+  }  
 `;
 
 export default function Index() {
   const section2 = useRef(null);
-  const [showScroll, setShowScroll] = useState(false);
+  const [showScroll, setShowScroll] = useState<boolean>(false);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -298,11 +294,11 @@ export default function Index() {
   return (
     <>
       <Showcase>
-        <h1>Asana guides you into the world of meditation.</h1>
-        <p>Take a breath. Share your favorite meditation streaming content!</p>
+        <h1>With Life Manager, you can make your life better.</h1>
+        <p>Record your favorite motivative streaming content!</p>
         <Link href='/streams'>
-          <Button variant='contained' color='primary'>
-            READY TO MEDITATE
+          <Button color='primary'>
+            ENTER
           </Button>
         </Link>
         <div>
@@ -316,43 +312,30 @@ export default function Index() {
 
       <SectionContainer ref={section2}>
         <Section>
-          <SectionImage src={sectionA} alt='' />
+          <SectionImage src='/sectionA.jpg' alt='' />
           <SectionContent>
-            <SpaTwoTone className='icon' />
-
+            <TabletMac className='icon' />
             <p>
-              Learn the life-changing skill of meditation
+              Learn the beneficial skill from media
               <br />
-              to calm your anxiety and relax your body.
+              to develop your mind and lifestyle.
             </p>
           </SectionContent>
         </Section>
         <Section>
-          <SectionImage src={sectionB} alt='' />
+          <SectionImage src='/sectionB.jpg' alt='' />
           <SectionContent>
-            <MusicNoteTwoTone className='icon' />
+            <WbIncandescent className='icon' />
             <p>
-              Music to help you focus, relax and sleep,
+              More you think,
               <br />
-              white nose, rain, relaxing sounds & more.
-            </p>
-          </SectionContent>
-        </Section>
-        <Section>
-          <SectionImage src={sectionC} alt='' />
-          <SectionContent>
-            <FavoriteTwoTone className='icon' />
-            <p>
-              Sleep more. Stress less. Live better.
-              <br />
-              Asana will help you.
+              Better life come to you.
             </p>
           </SectionContent>
         </Section>
       </SectionContainer>
       <Footer>
-        Copyright &copy; {new Date().getFullYear()} Asana | All rights reserved.
-        | MINJI LEE
+        {new Date().getFullYear()} | Life Manager | KIM ISU
       </Footer>
       <FloatingButton onClick={scrollToTop} show={showScroll}>
         <KeyboardArrowUpRounded className='arrow-icon' />
